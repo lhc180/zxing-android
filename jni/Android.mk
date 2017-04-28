@@ -11,16 +11,12 @@ LOCAL_CPPFLAGS := -DNO_ICONV=1
 
 define all-cpp-files-under
 $(patsubst ./%,%, \
-  $(shell cd $(LOCAL_PATH) ; \
-          find $(1) -name "*.cpp" -and -not -name ".*") \
- )
+	$(shell  find $(LOCAL_PATH)  -name "*.cpp" -and -not -name ".*"))
 endef
 
 define all-cc-files-under
 $(patsubst ./%,%, \
-  $(shell cd $(LOCAL_PATH) ; \
-          find $(1) -name "*.cc" -and -not -name ".*") \
- )
+	$(shell find $(LOCAL_PATH) -name "*.cc" -and -not -name ".*"))
 endef
 
 define all-subdir-cpp-files
@@ -36,5 +32,7 @@ LOCAL_SRC_FILES += $(call all-subdir-cc-files)
 
 
 
+#LOCAL_STATIC_LIBRARIES := libiconv
 include $(BUILD_SHARED_LIBRARY)
-include $(CLEAR_VARS)
+ 
+#include  $(LOCAL_PATH)/../libiconv/Android.mk 
